@@ -1,4 +1,4 @@
-'use client'
+
 import { Input, ButtonSearch, SearchBarContainer, Image } from "./Searchbar.styles"
 
 const SearchBar:React.FC=():React.ReactElement => {

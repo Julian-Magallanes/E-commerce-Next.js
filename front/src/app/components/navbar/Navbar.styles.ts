@@ -8,7 +8,7 @@ const NavbarContainer = styled.div `
     align-items:center;
     background-color:#CCCCCC;
     border: 0.5px solid #757575;
-    padding: 0px 40px;
+    padding: 0px 40px; 
 `
 export {
     NavbarContainer

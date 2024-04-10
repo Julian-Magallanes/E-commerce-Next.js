@@ -7,7 +7,7 @@ const SearchPages:React.FC = ():React.ReactElement =>{
             <Link href={"/"}><Page>Home</Page></Link>
             <Link href={"/about"}><Page>About</Page></Link>
             <Link href={"/products"}><Page>Products</Page></Link>
-            <Page>Contact</Page>
+            <Link href={"/contact"}><Page>Contact</Page></Link>
         </PageContainer>
     )
 }
