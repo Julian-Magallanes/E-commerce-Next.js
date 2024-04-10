@@ -2,22 +2,19 @@ import styled from "styled-components";
 
 const FilterContainer = styled.div`
     display: flex;
+    background-color:#CCCCCC;
+    border-bottom: #757575;
 `
 
-const Image = styled.img`
-    width: 16px;
-    height:100%;
-    display:flex;
-`
 const FilterList = styled.button`
     width:100%;
     display: flex;
     flex-direction: row;
+    justify-content:center;
     margin: 10px;
 `
 export {
     FilterContainer,
-    Image,
     FilterList
 
 }

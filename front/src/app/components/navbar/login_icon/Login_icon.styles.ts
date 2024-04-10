@@ -5,6 +5,7 @@ const ButtonIcon = styled.button `
 `
 const Image = styled.img `
     width:20px;
+    margin: 0px 20px;
 `
 export{
     ButtonIcon,

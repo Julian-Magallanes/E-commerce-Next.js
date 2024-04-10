@@ -12,10 +12,10 @@ const SearchBarContainer = styled.div`
     justify-content:space-between;
     height: 2rem;
     width: 26rem;
-    border: 0.5px solid ${(props) => props.theme.colors.border};
+    border: 0.5px solid #757575;
     border-radius:50px;
     padding:  0rem 1rem;
-    background-color:${(props) => props.theme.colors.primary};
+    background-color:#F5F5F5;
 `
 const Image = styled.img`
     width:20px;

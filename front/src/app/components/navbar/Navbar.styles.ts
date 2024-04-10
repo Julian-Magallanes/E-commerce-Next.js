@@ -6,7 +6,9 @@ const NavbarContainer = styled.div `
     width:100%;
     justify-content:space-between;
     align-items:center;
-    background-color:${(props) => props.theme.colors.secondary};
+    background-color:#CCCCCC;
+    border: 0.5px solid #757575;
+    padding: 0px 40px;
 `
 export {
     NavbarContainer

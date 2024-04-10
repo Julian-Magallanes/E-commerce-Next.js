@@ -1,6 +1,6 @@
-interface ICategory {
-    name: string;
-}
+import {IProduct} from "@/app/types"
+import {ICategory} from "@/app/types"
+
 export const categoriesToPreLoad: ICategory[] = [
     { name: 'Smartphones' },
     { name: 'Laptops' },
@@ -13,14 +13,7 @@ export const categoriesToPreLoad: ICategory[] = [
     { name: 'Accessories' }
 ];
 
-interface IProduct {
-    name: string;
-    price: number;
-    description: string;
-    image: string;
-    categoryId: number;
-    stock: number;
-  }
+
   
 export const productsToPreLoad: IProduct[] = [
     {

@@ -1,15 +1,16 @@
 'use client'
-
-import { ThemeProvider } from "styled-components";
-import theme from "@/theme/styledComponent";
 import Navbar from "./components/navbar";
 import Card_productContainer from "./components/card_product-container";
+import Filter_search from "./components/filter_search";
+import Header from "./components/header";
 
 export default function Home() {
   return (
-    <ThemeProvider theme={theme}>
+    <>
+      <Header/>
       <Navbar/>
+      <Filter_search/>
       <Card_productContainer/>
-    </ThemeProvider>
+    </>
   );
 }
