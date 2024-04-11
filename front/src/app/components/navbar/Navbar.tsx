@@ -8,12 +8,14 @@ import SearchBar from "./searchbar"
 
 const Navbar: React.FC = (): React.ReactElement => {
     return (
-        <div className="flex h-16 bg-secondary content-between items-center border-border border-b pl-10 pr-10">
+        <div className="flex h-16 bg-secondary content-between items-center border-border border-b pl-10 pr-10 shadow-md relative z-10">
             <Logo/>
             <SearchPages/>
-            <SearchBar/>
-            <Cart_icon/>
-            <Login_icon/>
+            <div className="flex">
+                <SearchBar/>
+                <Cart_icon/>
+                <Login_icon/>
+            </div>
         </div>
     )
 }

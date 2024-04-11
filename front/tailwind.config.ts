@@ -10,16 +10,17 @@ const config: Config = {
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-conic":"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-header":"linear-gradient(157deg, rgba(115,239,209,1) 0%, rgba(201,248,218,1) 100%);"
       },
       colors: {
         'primary':"#F5F5F5",
-        'secondary': "#CCCCCC",
+        'secondary': "#EEEEEE",
         'terciary': "#76EED1",
-        'font':"#1C252F",
+        'font':"#464646",
         'background':"#FFFFFF",
-        'border':"#757575", 
+        'border':"#D4D4D4", 
+        'hoverButton':"#1DD7AA"
       },
     },
   },
