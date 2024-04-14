@@ -13,8 +13,8 @@ const PageContainer = styled.ul`
     justify-content: space-around;
     color:#464646;
     font-weight:600;
-    width:60%;
-    
+
+
 `
 export {
     Page,

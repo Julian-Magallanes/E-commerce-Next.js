@@ -1,3 +1,11 @@
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+    title: "Contact - TechBox",
+    description: "Get in touch with TechBox. Whether you have questions, feedback, or partnership inquiries, we're here to help. Reach out to us via email, phone, or through our contact form. We look forward to hearing from you!",
+  };
+
 export default function Contact() {
     return(
         <form className="w-2/3 mx-auto m-10">

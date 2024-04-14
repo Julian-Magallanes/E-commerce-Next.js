@@ -1,5 +1,9 @@
+import { Metadata } from "next";
 
-
+export const metadata: Metadata = {
+   title: "About - TechBox",
+   description: "Explore our selection of premium tech products at TechBox. From smartphones and laptops to smart home devices, we have everything you need to stay connected and productive in today's digital world.Explore our selection of premium tech products at TechBox. From smartphones and laptops to smart home devices, we have everything you need to stay connected and productive in today's digital world.",
+ };
 
 export default function About() {
     return (

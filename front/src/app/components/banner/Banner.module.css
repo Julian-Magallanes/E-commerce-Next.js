@@ -12,6 +12,11 @@
   display: none;
 }
 
+.mySlides img {
+  width: 100%;
+}
+
+
 /* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
@@ -20,13 +25,39 @@
   width: auto;
   margin-top: -22px;
   padding: 8px 20px;
-  color: white;
+  background-color: #EBEBEB;
+  color: #717171;
   font-weight: bold;
   font-size: 24px;
   transition: 0.6s ease;
   border-radius: 12px;
   user-select: none;
 }
+@media (max-width: 1024px) { 
+  .prev, .next {
+    top: 30%;
+  }
+}
+@media (max-width: 769px) { 
+  .prev, .next {
+    top: 28%;
+  }
+  .mySlides img {
+    width: 100%; /* Ancho del contenedor */
+  height: 240px; /* Altura fija para el ejemplo, puedes ajustarla según tus necesidades */
+  object-fit: cover;
+  }
+ }
+ @media (max-width: 400px) { 
+  .mySlides img {
+    display: none;
+  }
+ }
+ @media (max-width: 400px) { 
+  .prev, .next {
+    display: none;
+  }
+ }
 .prev {
   left: 16px;
 }
@@ -39,8 +70,7 @@
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
-  background-color: #EBEBEB;
-  color: #717171;
+  scale: 1.05;
   filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
 }
 

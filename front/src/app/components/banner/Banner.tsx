@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image';
 import styles from './Banner.module.css';
 import { useEffect } from 'react';
 
@@ -39,15 +40,15 @@ export default function Banner() {
         <div className={styles.slideshowContainer}>
             {/* Full-width images with number and caption text */}
             <div className={`${styles.mySlides} ${styles.fade}`}>
-                <img src="https://res.cloudinary.com/dzxrc9b6o/image/upload/v1712802830/Next/Celulares-nacionales-slider-desktop_mxcldv.jpg" style={{ width: "100%" }} />
+                <Image src="https://res.cloudinary.com/dzxrc9b6o/image/upload/v1713049165/Next/Celulares-nacionales-slider-desktop_ylgodu.webp" alt='slideimg1' width={1400} height={400} loading="lazy"/>
             </div>
 
             <div className={`${styles.mySlides} ${styles.fade}`}>
-                <img src="https://res.cloudinary.com/dzxrc9b6o/image/upload/v1712802830/Next/Tiendas-slider-desktop_frwlne.jpg" style={{ width: "100%" }} />
+                <Image src="https://res.cloudinary.com/dzxrc9b6o/image/upload/v1713049236/Next/Macro-slider-desktopo_t1jca0.webp"alt='slideimg2' width={1400} height={400} loading="lazy"/>
             </div>
 
             <div className={`${styles.mySlides} ${styles.fade}`}>
-                <img src="https://res.cloudinary.com/dzxrc9b6o/image/upload/v1712802830/Next/Macro-slider-desktopo_u2jqbd.jpg" style={{ width: "100%" }} />
+                <Image src="https://res.cloudinary.com/dzxrc9b6o/image/upload/v1713049352/Next/Tiendas-slider-desktop_hctzfb.webp"alt='slideimg3' width={1400} height={400} loading="lazy"/>
             </div>
 
             {/* Next and previous buttons */}
@@ -56,3 +57,4 @@ export default function Banner() {
         </div>
     );
 }
+/*<Image        fill        src="/example.png"        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"      />*/
