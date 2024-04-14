@@ -7,32 +7,32 @@ console.log(orders)*/}
 const products = await getProducts()
 console.log(products)
 return (
-    <div className="flex flex-row w-full justify-between ">  
-        <div className="ml-10 w-full p-10">
-            <div className="w-full flex flex-row items-center justify-between mx-4 px-8 mt-4 py-2 border-border border rounded-xl shadow-lg">
-                <h1 className="text-xl">
+    <div className="flex flex-row w-full justify-between  p-10 max-md:flex-col">  
+        <div className=" w-full md:pr-5">
+            <div className="w-full flex flex-row items-center justify-between  px-8 my-4 py-2 border-border border rounded-xl shadow-lg">
+                <h1 className="text-lg">
                     Product
                 </h1 >
-                <h1 className="text-xl">
+                <h1 className="text-lg">
                     Price
                 </h1>
-                <h1 className="text-xl">
+                <h1 className="text-lg">
                     Amount
                 </h1>
-                <h1 className="text-xl">
+                <h1 className="text-lg">
                     Price
                 </h1>
             </div>
             {products.map((product,index)=>{
-                return <div key={index} className="w-full flex flex-row items-center justify-between border-border border rounded-xl  m-4 p-8 shadow-lg transition ease-in-out delay-150 hover:scale-105">
-                        <img src={product.image} className="w-20"/>
-                        <h4 className="text-xl">{product.name}</h4>
-                        <h4 className="text-xl">{product.stock}</h4>
-                        <h1 className="text-xl">{`$ USD ${product.price}`}</h1>
+                return <div key={index} className="w-full flex flex-row items-center justify-between border-border border rounded-xl  mb-4 p-4 shadow-lg transition ease-in-out delay-150 hover:scale-105">
+                        <img src={product.image} className="w-20 max-sm:w-12" alt={product.name}/>
+                        <h4 className="text-lg max-sm:text-sm">{product.name}</h4>
+                        <h4 className="text-lg max-sm:text-sm">{product.stock}</h4>
+                        <h1 className="text-lg max-sm:text-sm">{`$ USD ${product.price}`}</h1>
                     </div>
             })}
         </div>
-        <div className="w-full p-10">
+        <div className="w-full md:pl-5">
             <div className="flex flex-col justify-between content-between bg-secondary rounded-xl w-full border-border border shadow-md h-1/4 mx4 mt-4 mb-4">
                 <div className="flex m-6">
                     <p className="text-xl">Aticles: </p>

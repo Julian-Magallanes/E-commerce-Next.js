@@ -8,14 +8,15 @@ export const metadata: Metadata = {
 
 export default function Contact() {
     return(
-        <form className="w-2/3 mx-auto m-10">
+        <form className="w-2/3 mx-auto m-10 max-md:w-full p-10">
+            <h1 className="text-4xl text-center m-4">Contact</h1>
         <div className="mb-5">
             <label className="block mb-2 text-lg font-medium text-text dark:text-white">Your email</label>
             <input type="email" id="email" className="shadow-sm  border border-border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
         </div>
         <div className="mb-5">
             <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Your name</label>
-            <input type="password" id="password" className="shadow-sm  border border-border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+            <input type="text" id="textName" className="shadow-sm  border border-border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
         </div>
         <div className="mb-5">
             <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Your message</label>

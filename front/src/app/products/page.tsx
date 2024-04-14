@@ -10,7 +10,9 @@ export const metadata: Metadata = {
 export default function Product() {
   return (
     <>
+    <div className=" max-md:hidden">
       <Filter_search/>
+    </div>
       <Card_productContainer/>
     </>
   );

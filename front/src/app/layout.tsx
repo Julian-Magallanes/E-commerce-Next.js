@@ -8,8 +8,8 @@ import Footer from "./components/footer";
 const barlow = Barlow({ subsets: ['latin'], weight: "300"});
 
 export const metadata: Metadata = {
-  title: "TechBox",
-  description: "Welcome to TechBox, your reliable source for tech news and analysis. Explore the latest trends in devices, software, gadgets, and more. Stay updated with our reviews and buying guides.",
+  title: "Home -TechBox",
+  description: "Page of tecnology.",
 };
 
 export default function RootLayout({

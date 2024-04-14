@@ -25,4 +25,10 @@ async function getProductByID(id: string) {
     return product
     
 }
-export {getProducts, getProductByID}
+async function getProductByCategoryID(id: string) {
+    const products = await getProducts()
+    const product = products.find((product)=>product.categoryId.toString()===id)
+    return product
+    
+}
+export {getProducts, getProductByID, getProductByCategoryID}

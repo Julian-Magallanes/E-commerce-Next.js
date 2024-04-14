@@ -2,21 +2,22 @@ import {IProduct} from "@/app/types"
 import {ICategory} from "@/app/types"
 
 export const categoriesToPreLoad: ICategory[] = [
-    { name: 'Smartphones' },
-    { name: 'Laptops' },
-    { name: 'Tablets' },
-    { name: 'Headphones' },
-    { name: 'Cameras' },
-    { name: 'Printers' },
-    { name: 'Monitors' },
-    { name: 'Storage' },
-    { name: 'Accessories' }
+    { id:1, name: 'Smartphones' },
+    { id:2,name: 'Laptops' },
+    { id:3,name: 'Tablets' },
+    { id:5,name: 'Headphones' },
+    { id:8,name: 'Cameras' },
+    { id:9,name: 'Printers' },
+    { id:10,name: 'Monitors' },
+    { id:6,name: 'Storage' },
+    { id:4,name: 'Accessories' }
 ];
 
 
   
 export const productsToPreLoad: IProduct[] = [
     {
+      id:"1",
       name: "iPhone 11",
       price: 699,
       description:
@@ -27,6 +28,7 @@ export const productsToPreLoad: IProduct[] = [
       stock: 10,
     },
     {
+      id:"2",
       name: "MacBook Air",
       price: 999,
       description:
@@ -37,6 +39,7 @@ export const productsToPreLoad: IProduct[] = [
       stock: 10,
     },
     {
+      id:"3",
       name: "iPad Pro",
       price: 799,
       description:
@@ -47,6 +50,7 @@ export const productsToPreLoad: IProduct[] = [
       stock: 10,
     },
     {
+      id:"4",
       name: "Apple Watch Series 6",
       price: 399,
       description:
@@ -57,6 +61,7 @@ export const productsToPreLoad: IProduct[] = [
       stock: 10,
     },
     {
+      id:"5",
       name: "AirPods Pro",
       price: 249,
       description:
@@ -67,6 +72,7 @@ export const productsToPreLoad: IProduct[] = [
       stock: 10,
     },
     {
+      id:"6",
       name: "HomePod mini",
       price: 99,
       description:
