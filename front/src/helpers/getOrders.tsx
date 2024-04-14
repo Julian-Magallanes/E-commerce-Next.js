@@ -1,12 +1,21 @@
 
-import { IOrder} from "@/app/types"
+
+import axios from "axios"
+const apiUrl = process.env.NEXT_PUBLIC_API_URL
+const token = process.env.NEXT_PUBLIC_TOKEN_AUTHORIZATION
 
 async function getOrders() {
-    const response = await fetch("http://localhost:3001/users/orders")
-    const orders:IOrder[] = await response.json()
-    return orders
+    try{
+    const response = await axios.get(`${apiUrl}/users/orders`, {
+        headers:{
+            Authorization:token,
+        }
+    });
+    return response.data;
+    }catch (error){
+        throw error;
 }
-
+} 
 export {
     getOrders
 }

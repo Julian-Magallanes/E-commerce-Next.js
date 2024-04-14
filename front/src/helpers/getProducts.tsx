@@ -1,9 +1,9 @@
 import { IProduct } from "@/app/types"
 import { productsToPreLoad } from "@/utils/Preload"
-
+const apiUrl = process.env.API_URL
 
 async function getProductsDB() {
-    const response = await fetch("http://localhost:3001/products")
+    const response = await fetch(`${apiUrl}/products`)
     const products:IProduct[] = await response.json()
     return products
 }
