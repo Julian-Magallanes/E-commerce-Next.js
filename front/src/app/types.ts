@@ -12,6 +12,16 @@ export interface IProduct {
     categoryId: number;
     stock: number;
   }
+  export interface ICartProduct {
+    id:string;
+    name: string;
+    price: number;
+    description: string;
+    image: string;
+    categoryId: number;
+    stock: number;
+    count:number;
+  }
 
 interface IUser {
     id: number;

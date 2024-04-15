@@ -24,8 +24,11 @@ const MenuIcon:React.FC=():React.ReactElement => {
             <div className={`${"w-full h-1 bg-font m-1"} ${menuAnimation ? "-rotate-45 -translate-y-1" : ''}`}></div>
         </div>
         <ul className={`${!dropdownVisible ? "hidden" : "flex flex-col absolute z-10 top-16 right-0 p-10 bg-background w-screen items-center shadow-md"}`}>
-        <li className="m-2 border border-border hover:border hover:shadow-md duration-200 ease-in-out hover:border-font hover:font-bold bg-secondary rounded-md px-4">
+            <li className="m-2 border border-border hover:border hover:shadow-md duration-200 ease-in-out hover:border-font hover:font-bold bg-secondary rounded-md px-4">
                 <Link href={"/login"} onClick={() => toggleDropdown()}>Login</Link>
+            </li>
+            <li className="m-2 border border-border hover:border hover:shadow-md duration-200 ease-in-out hover:border-font hover:font-bold bg-secondary rounded-md px-4">
+                <Link href={"/orders"} onClick={() => toggleDropdown()}>Orders</Link>
             </li>
             <li className="m-2 border-b-2 border-transparent hover:border-b-2 duration-200 ease-in-out hover:border-font hover:font-bold ">
                 <Link href={"/"} onClick={() => toggleDropdown()}>Home</Link>

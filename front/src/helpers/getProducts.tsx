@@ -1,6 +1,6 @@
 import { IProduct } from "@/app/types"
 import { productsToPreLoad } from "@/utils/Preload"
-const apiUrl = process.env.API_URL
+const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
 async function getProductsDB() {
     const response = await fetch(`${apiUrl}/products`)
