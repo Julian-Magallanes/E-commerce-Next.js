@@ -1,5 +1,4 @@
 import axios from "axios"
-import{IUser} from "@/app/types"
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
 export interface UserData {
@@ -21,14 +20,13 @@ async function postLogin(userData:UserData) {
         headers:{
             "Content-Type": "application/json"
         },
-
     }
-);
+    );
     return response.data;
     }catch (error){
         console.log(error)
         throw error;
-}
+    }
 } 
 
 async function postRegister(userDataRegister:UserDataRegister) {

@@ -2,7 +2,7 @@
 import { getOrders} from "@/helpers"
 import { IOrder } from "../types"
 import { useAuth } from "@/context/Context";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 
 
@@ -15,9 +15,9 @@ export default function Order() {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                if (auth) { // Verifica si auth está definido antes de acceder a sus propiedades
+                if (auth) { 
                     const { token } = auth;
-                    if (token) { // Verifica si el token está definido
+                    if (token) { 
                         const ordersData: IOrder[] = await getOrders(token);
                         setOrders(ordersData);
                     }
@@ -29,7 +29,7 @@ export default function Order() {
 
         fetchOrders();
     }, [auth]);
-console.log(orders)
+
 
 const formatDateTime = (isoDateString: string) => {
         const date = new Date(isoDateString);
@@ -44,6 +44,9 @@ const formatDateTime = (isoDateString: string) => {
         };
         return date.toLocaleString('en-US', options);
     };
+    function Loading() {
+        return <h2>🌀 Loading...</h2>;
+      }
 return (
     <div>
         <h1 className="w-full text-2xl text-center pt-10 px-10 font-semibold">Orders List</h1>  
@@ -60,13 +63,17 @@ return (
                     Date
                 </h1>
             </div>
+            
             {orders.map((order)=>{
                 return <div key={order.id} className="w-full flex flex-row items-center justify-between border-border border rounded-xl  mb-4 p-4 shadow-lg transition ease-in-out delay-150 hover:scale-105">
                         <h4 className="w-60 text-center text-lg max-sm:text-sm ">{order.products.length}</h4>
                         <h4 className="w-60 text-center text-lg max-sm:text-sm">{order.status}</h4>
+                        <Suspense fallback={<Loading />}>
                         <h1 className="w-60 text-center text-lg max-sm:text-sm">{formatDateTime(order.date)}</h1>
+                        </Suspense>
                     </div>
             })}
+            
         </div>
     </div> 
     </div> 

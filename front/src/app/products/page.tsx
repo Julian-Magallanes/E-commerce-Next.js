@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Card_productContainer from "../components/card_product-container";
 import Filter_search from "../components/filter_search";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Products - TechBox",
@@ -8,12 +9,17 @@ export const metadata: Metadata = {
 };
 
 export default function Product() {
+  function Loading() {
+    return <h2>🌀 Loading...</h2>;
+  }
   return (
     <>
     <div className=" max-md:hidden">
       <Filter_search/>
     </div>
+    <Suspense fallback={<Loading />}>
       <Card_productContainer/>
+    </Suspense>
     </>
   );
 }

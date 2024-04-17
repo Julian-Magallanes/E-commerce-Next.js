@@ -1,8 +1,9 @@
+//usada en utils 
 export interface ICategory {
     id:number
     name: string;
 }
-
+//usada en utils, cart-order
 export interface IProduct {
     id:string;
     name: string;
@@ -13,6 +14,7 @@ export interface IProduct {
     stock: number;
     
   }
+  //usada en cart-order
   export interface ICartProduct {
     id:string;
     name: string;
@@ -23,20 +25,34 @@ export interface IProduct {
     stock: number;
     count:number;
   }
-
-  export interface IUser {
+  //usada en orders
+  export interface IOrder{
     id: number;
-    name: string;
-    email: string;
-    address: string;
-    phone: string;
-    credential: Credential;
+    status: string;
+    date: string;
+    user: IUser;
+    products: IProduct[];
+  }
+  //usada en interface IOrders
+    export interface IUser {
+      id: number;
+      name: string;
+      email: string;
+      address: string;
+      phone: string;
+      credential: Credential;
+  }
+//usada en login
+export interface ICredential {
+  email: string;
+  password: string;
 }
-
-export interface IOrder{
-  id: number;
-  status: string;
-  date: string;
-  user: IUser;
-  products: IProduct[];
+//usada en register
+export interface IRegister {
+  email: string;
+  password: string;
+  passwordValidate: string;
+  name: string;
+  address: string;
+  phone: string;
 }

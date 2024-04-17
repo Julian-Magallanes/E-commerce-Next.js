@@ -22,13 +22,9 @@ const SearchBarContainer = styled.div`
     padding:  0rem 1rem;
     background-color:#F5F5F5;
 `
-const Image = styled.img`
-    width:20px;
-    background-color:#F5F5F5;
-`
 export{
     Input,
     ButtonSearch,
     SearchBarContainer,
-    Image
+
 }

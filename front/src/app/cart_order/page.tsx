@@ -44,7 +44,7 @@ export default function CartOrder() {
 
     async function handlePostOrders() {
         const orderProducts = new Set(cartProducts.map((products) => parseInt(products.id)));
-        await postOrders(Array.from(orderProducts));
+        await postOrders(Array.from(orderProducts),token);
         if(!cleanCart)return
         cleanCart();
         setCartProducts([]);

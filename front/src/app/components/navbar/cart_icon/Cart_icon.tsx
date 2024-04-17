@@ -1,9 +1,10 @@
 import Link from "next/link"
-import { ButtonCart, Image } from "./Cart_icon.styles"
+import { ButtonCart } from "./Cart_icon.styles"
 import {IProduct } from "@/app/types"
 import { useEffect, useState } from "react"
 import { useCart } from "@/context/ContextCart"
 import { useAuth } from "@/context/Context"
+import Image from "next/image"
 
 const CartIcon:React.FC=():React.ReactElement => {
 
@@ -31,7 +32,7 @@ const CartIcon:React.FC=():React.ReactElement => {
     return(
         <ButtonCart>
             <Link href="/cart_order" className="flex">
-                <Image src="https://res.cloudinary.com/dzxrc9b6o/image/upload/v1712494041/Next/cartIcon_jy3qtk.svg" alt="searchCart" width={50} height={50} loading="lazy"/>
+                <Image src="https://res.cloudinary.com/dzxrc9b6o/image/upload/v1712494041/Next/cartIcon_jy3qtk.svg" alt="searchCart" width={24} height={24} className="mx-5 duration-300 ease-in-out hover:scale-105" loading="lazy"/>
                 {token && <div>{cart ? <h1 className="absolute text-text font-bold border bg-terciary rounded-full w-4 text-xs right-[104px]">{countTotal}</h1> : <div className="hidden"/>}</div>}
             </Link>
         </ButtonCart>

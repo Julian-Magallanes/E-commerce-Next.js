@@ -3,9 +3,11 @@
 import { postLogin } from "@/helpers";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from 'sweetalert2'
 import { useAuth } from "@/context/Context"
+import { ValidateLogin } from "@/middleware";
+import { ICredential } from "@/app/types";
 
 /*import { Metadata } from "next";
 export const metadata: Metadata = {
@@ -17,10 +19,19 @@ export default function Login() {
     const router = useRouter()
     const auth = useAuth()
     const { login } = auth || {};
-    const [userData, setUserData] = useState({
+    const [userData, setUserData] = useState<ICredential>({
         email:"",
         password:""
     })
+    const [errorData, setErrorData] = useState<ICredential>({
+        email:"",
+        password:""
+    })
+
+    useEffect(()=>{
+        const errors = ValidateLogin(userData);
+        setErrorData(errors)
+    },[userData])
 
     const handleOnChange = (event:any) =>{
         const {name, value} = event.target;
@@ -66,6 +77,7 @@ export default function Login() {
             value={userData.email}
             />
         </div>
+        <p className="text-sm text-red-500 bold font-semibold">{errorData.email}</p>
         <div className="mb-5">
             <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Your password</label>
             <input type="password" id="password" className="shadow-sm  border border-border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required 
@@ -74,6 +86,7 @@ export default function Login() {
             value={userData.password}
             />
         </div>
+        <p className="text-sm text-red-500 bold font-semibold">{errorData.password}</p>
         <div className="flex items-start mb-5">
             <div className="flex items-center h-5">
             </div>

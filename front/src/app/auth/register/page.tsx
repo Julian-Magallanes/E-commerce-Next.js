@@ -1,25 +1,35 @@
 'use client'
+import { IRegister} from "@/app/types";
 import { postRegister } from "@/helpers";
+import { ValidateRegister } from "@/middleware";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from 'sweetalert2'
 
-/*import { Metadata } from "next";
-export const metadata: Metadata = {
-    title: "Register - TechBox",
-    description: "Join the TechBox community today! Register for an account to unlock exclusive benefits and stay updated on the latest in tech trends. Signing up is quick and easy - simply fill out the required information and create your personalized account. As a TechBox member, you'll gain access to special offers, personalized recommendations, and much more. Don't miss out on the opportunity to be part of something extraordinary. Sign up now and embark on your journey with TechBox!",
-  };
-*/
 export default function Register() {
     const router = useRouter()
-    const [userDataRegister, setUserDataRegister] = useState({
+    const [userDataRegister, setUserDataRegister] = useState<IRegister>({
         email:"",
         password:"",
+        passwordValidate:"",
         name:"",
         address:"",
         phone:""
     })
+    const [errorDataRegister, setErrorDataRegister] = useState<IRegister>({
+        email:"",
+        password:"",
+        passwordValidate:"",
+        name:"",
+        address:"",
+        phone:""
+    })
+
+    useEffect(()=>{
+        const errors = ValidateRegister(userDataRegister);
+        setErrorDataRegister(errors)
+    },[userDataRegister])
 
     const handleOnChange = (event:any) =>{
         const {name, value} = event.target;
@@ -63,6 +73,7 @@ export default function Register() {
             value={userDataRegister.email}
             />
         </div>
+        <p className="text-sm text-red-500 bold font-semibold">{errorDataRegister.email}</p>
         <div className="mb-5">
             <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Your password</label>
             <input type="password" id="password" className="shadow-sm  border border-border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required 
@@ -71,6 +82,16 @@ export default function Register() {
             value={userDataRegister.password}
             />
         </div>
+        <p className="text-sm text-red-500 bold font-semibold">{errorDataRegister.password}</p>
+        <div className="mb-5">
+            <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Your password</label>
+            <input type="password" id="password" className="shadow-sm  border border-border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required 
+            onChange={handleOnChange}
+            name="passwordValidate"
+            value={userDataRegister.passwordValidate}
+            />
+        </div>
+        <p className="text-sm text-red-500 bold font-semibold">{errorDataRegister.passwordValidate}</p>
         <div className="mb-5">
             <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Your name</label>
             <input type="text" id="name" className="shadow-sm  border border-border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required 
@@ -79,6 +100,7 @@ export default function Register() {
             value={userDataRegister.name}
             />
         </div>
+        <p className="text-sm text-red-500 bold font-semibold">{errorDataRegister.name}</p>
         <div className="mb-5">
             <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Your address</label>
             <input type="text" id="address" className="shadow-sm  border border-border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required 
@@ -87,6 +109,7 @@ export default function Register() {
             value={userDataRegister.address}
             />
         </div>
+        <p className="text-sm text-red-500 bold font-semibold">{errorDataRegister.address}</p>
         <div className="mb-5">
             <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Your phone</label>
             <input type="number" id="phone" className="shadow-sm  border border-border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required 
@@ -95,6 +118,7 @@ export default function Register() {
             value={userDataRegister.phone}
             />
         </div>
+        <p className="text-sm text-red-500 bold font-semibold">{errorDataRegister.phone}</p>
         <div className="flex items-start mb-5">
             <div className="flex items-center h-5">
             </div>

@@ -2,8 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Filter_search from "../../filter_search";
+import { useAuth } from "@/context/Context";
 
 const MenuIcon:React.FC=():React.ReactElement => {
+    const auth = useAuth()
+    const { token, logout } = auth || {};
+
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [menuAnimation, setMenuAnimation] = useState(false);
     const toggleDropdown = () => {
@@ -16,6 +20,14 @@ const MenuIcon:React.FC=():React.ReactElement => {
         setDropdownVisibleCategories(!dropdownVisibleCategories);
         setMenuAnimationCategories(!menuAnimationCategories);
     };
+    const handleLogout = () =>{
+        if(!logout){
+            return
+        }
+        logout()
+        setDropdownVisible(!dropdownVisible);
+        setMenuAnimation(!menuAnimation);
+    }
     return(
         <div className="md:hidden">
         <div className={"flex flex-col w-10 h-8 cursor-pointer"} onClick={() => toggleDropdown()}>
@@ -24,9 +36,11 @@ const MenuIcon:React.FC=():React.ReactElement => {
             <div className={`${"w-full h-1 bg-font m-1"} ${menuAnimation ? "-rotate-45 -translate-y-1" : ''}`}></div>
         </div>
         <ul className={`${!dropdownVisible ? "hidden" : "flex flex-col absolute z-10 top-16 right-0 p-10 bg-background w-screen items-center shadow-md"}`}>
-            <li className="m-2 border border-border hover:border hover:shadow-md duration-200 ease-in-out hover:border-font hover:font-bold bg-secondary rounded-md px-4">
-                <Link href={"/login"} onClick={() => toggleDropdown()}>Login</Link>
-            </li>
+            {token ?<li className="m-2 border border-border hover:border hover:shadow-md duration-200 ease-in-out hover:border-font hover:font-bold bg-secondary rounded-md px-4" onClick={() => handleLogout()}>
+                Logout
+            </li>:<li className="m-2 border border-border hover:border hover:shadow-md duration-200 ease-in-out hover:border-font hover:font-bold bg-secondary rounded-md px-4">
+                <Link href={"/auth/login"} onClick={() => toggleDropdown()}>Login</Link>
+            </li>}
             <li className="m-2 border border-border hover:border hover:shadow-md duration-200 ease-in-out hover:border-font hover:font-bold bg-secondary rounded-md px-4">
                 <Link href={"/orders"} onClick={() => toggleDropdown()}>Orders</Link>
             </li>

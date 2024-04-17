@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={barlow.className}>
+      <body className={barlow.className} suppressHydrationWarning={true}>
         <CartProvider>
         <AuthProvider >
           <Header/>
