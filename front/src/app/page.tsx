@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Banner from "./components/banner";
 import Filter_search from "./components/filter_search";
 import Offers from "./components/offers";
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: "TechBox",
@@ -11,11 +12,16 @@ export const metadata: Metadata = {
 
 
 export default function Home() {
+  function Loading() {
+  return <h2>🌀 Loading...</h2>;
+}
   return (
     <><div className="max-sm:hidden">
         <Filter_search/>
       </div>
+      <Suspense fallback={<Loading />}>
       <Banner/>
+      </Suspense>
       <Offers/>
     </>
   );

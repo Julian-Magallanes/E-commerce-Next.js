@@ -11,6 +11,7 @@ export interface IProduct {
     image: string;
     categoryId: number;
     stock: number;
+    
   }
   export interface ICartProduct {
     id:string;
@@ -35,7 +36,7 @@ interface IUser {
 export interface IOrder{
   id: number;
   status: string;
-  date: Date;
+  date: string;
   user: IUser;
   products: IProduct[];
 }

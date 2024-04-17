@@ -1,7 +1,7 @@
 import { getOrders, getProducts } from "@/helpers"
 import { IOrder } from "../types"
 
-//http://localhost:3001/users/orders
+
 export default async function Order() {
     const orders: IOrder[] = await getOrders()
     console.log(orders)
@@ -21,7 +21,9 @@ const formatDateTime = (isoDateString: string) => {
         return date.toLocaleString('en-US', options);
     };
 return (
-    <div className="flex flex-row w-full justify-between  p-10 max-md:flex-col">  
+    <div>
+        <h1 className="w-full text-2xl text-center pt-10 px-10 font-semibold">Orders List</h1>  
+    <div className="flex flex-row w-full justify-between  p-10 max-md:flex-col">
         <div className=" w-full md:pr-5">
             <div className="w-full flex flex-row items-center justify-between  px-4 my-4 py-2 border-border border rounded-xl shadow-lg">
                 <h1 className="w-60 text-center text-lg">
@@ -42,6 +44,7 @@ return (
                     </div>
             })}
         </div>
-    </div>  
+    </div> 
+    </div> 
     )
 }

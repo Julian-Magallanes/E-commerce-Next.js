@@ -2,34 +2,35 @@ import Link from "next/link"
 import { ButtonCart, Image } from "./Cart_icon.styles"
 import { ICartProduct, IProduct } from "@/app/types"
 import { useEffect, useState } from "react"
+import { useCart } from "@/context/ContextCart"
 
 const CartIcon:React.FC=():React.ReactElement => {
-    const [cart, setCart]= useState<ICartProduct[]>([])
+
+    const cartStorage = useCart()
+    const { cart} = cartStorage || {};
+
     const [countTotal, setCountTotal] = useState(0)
     useEffect(()=>{
-        const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-        const countedCart: ICartProduct[]=[];
-        if (storedCart.length > 0){
-            storedCart.forEach((product : IProduct) => {
-                const existingProduct = countedCart.find(
-                    (item) => item.id === product.id
-                )
-                if (existingProduct){
-                    existingProduct.count += 1
-                } else {
-                    countedCart.push({...product, count:1})
-                }
+        if (!cart) {return};
+
+        const storedCart = JSON.parse(cart);
+        let count = 0;
+
+        if (storedCart.length > 0) {
+            storedCart.forEach((product: IProduct) => {
+                count++;
             });
         }
-    setCart(countedCart)
-    const countTotal = countedCart.reduce((sum, product)=> sum + product.count, 0)
-    setCountTotal(countTotal)
-},[]);
+        storedCart.length = 0
+
+
+        setCountTotal(count);
+    }, [cart]);
     return(
         <ButtonCart>
             <Link href="/cart_order" className="flex">
                 <Image src="https://res.cloudinary.com/dzxrc9b6o/image/upload/v1712494041/Next/cartIcon_jy3qtk.svg" alt="searchCart" width={50} height={50} loading="lazy"/>
-                {countTotal > 0 && <h1 className="absolute text-text font-bold border bg-terciary rounded-full w-4 text-xs right-[104px]">{countTotal}</h1>}
+                {cart ? <h1 className="absolute text-text font-bold border bg-terciary rounded-full w-4 text-xs right-[104px]">{countTotal}</h1> : <div className="hidden"/>}
             </Link>
         </ButtonCart>
     )

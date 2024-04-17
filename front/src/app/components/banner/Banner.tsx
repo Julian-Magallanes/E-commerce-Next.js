@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import styles from './Banner.module.css';
 import { useEffect } from 'react';
+import { Suspense } from 'react';
 
 export default function Banner() {
     let slideIndex: number = 1;
@@ -35,12 +36,17 @@ export default function Banner() {
             
         }
     }
-
+    function Loading() {
+        return <h2>🌀 Loading...</h2>;
+      }
     return (
+ 
         <div className={styles.slideshowContainer}>
             {/* Full-width images with number and caption text */}
             <div className={`${styles.mySlides} ${styles.fade}`}>
+                <Suspense fallback={<Loading />}>
                 <Image src="https://res.cloudinary.com/dzxrc9b6o/image/upload/v1713049165/Next/Celulares-nacionales-slider-desktop_ylgodu.webp" alt='slideimg1' width={1400} height={400} loading="lazy"/>
+                </Suspense>            
             </div>
 
             <div className={`${styles.mySlides} ${styles.fade}`}>
@@ -52,8 +58,9 @@ export default function Banner() {
             </div>
 
             {/* Next and previous buttons */}
-            <a className={styles.prev} onClick={() => plusSlides(-1)}>&#10094;</a>
-            <a className={styles.next} onClick={() => plusSlides(1)}>&#10095;</a>
+            <button className={styles.prev} onClick={() => plusSlides(-1)}>&#10094;</button >
+            <button  className={styles.next} onClick={() => plusSlides(1)}>&#10095;</button >
         </div>
+
     );
 }

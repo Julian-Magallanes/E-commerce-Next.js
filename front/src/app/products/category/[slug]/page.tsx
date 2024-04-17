@@ -5,11 +5,12 @@ import Link from "next/link";
 export default async function ProductCategory({ params } : { params:any}) {
     const {slug} = params;
     const product = await getProductByCategoryID (slug)
+    
   return (
     <>  <div className=" max-md:hidden">
             <Filter_search/>
         </div>
-        {product === undefined ? (
+        {product === undefined ?  (
                 <div className="w-full text-center p-20 text-6xl my-40">There are no products for this category at the moment.</div>
             ) : (
                 <Link href={`/products/${product?.id}`} className="w-full flex items-center justify-center">

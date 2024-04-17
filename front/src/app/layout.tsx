@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { Barlow } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/footer";
+import { AuthProvider } from "@/context/Context";
+import { CartProvider } from "@/context/ContextCart";
 
 const barlow = Barlow({ subsets: ['latin'], weight: "300"});
 
@@ -20,10 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={barlow.className}>
+        <CartProvider>
+        <AuthProvider >
           <Header/>
           <Navbar/>
           {children}
           <Footer/>
+          </AuthProvider>
+          </CartProvider>
       </body>
     </html>
   );
