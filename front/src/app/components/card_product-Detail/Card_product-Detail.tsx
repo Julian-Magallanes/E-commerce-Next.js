@@ -4,6 +4,7 @@ import { useCart } from "@/context/ContextCart";
 import { getProductByID } from "@/helpers";
 import { useRouter } from 'next/navigation';
 import { IProduct } from '@/app/types'; // Asegúrate de importar el tipo correcto para tu producto
+import Image from 'next/image';
 
 const CardProductDetail: React.FC<{ slug: string }> = ({ slug }): React.ReactElement => {
 
@@ -46,7 +47,7 @@ const CardProductDetail: React.FC<{ slug: string }> = ({ slug }): React.ReactEle
 
     <div className="flex items-center w-full justify-center p-10 h-full max-md:flex-col">
       <div className="w-1/3 p-10 max-lg:w-full">
-        <img src={product.image} className="w-full" alt={product.name}></img>
+        <Image src={product.image} className="w-full" alt={product.name} width={800} height={800}/>
       </div>
       <div className="flex flex-col justify-between content-between bg-secondary rounded-xl w-1/3 border-border border shadow-md h-[600px] max-lg:w-full max-lg:h-full">
         <h1 className="text-4xl w-full m-6">{product.name}</h1>

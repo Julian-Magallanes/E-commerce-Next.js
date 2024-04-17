@@ -1,5 +1,6 @@
 import Filter_search from "@/app/components/filter_search";
 import { getProductByCategoryID } from "@/helpers";
+import Image from "next/image";
 import Link from "next/link";
 
 export default async function ProductCategory({ params } : { params:any}) {
@@ -15,7 +16,7 @@ export default async function ProductCategory({ params } : { params:any}) {
             ) : (
                 <Link href={`/products/${product?.id}`} className="w-full flex items-center justify-center">
                     <div key={product?.id} className="w-80 flex flex-col items-center justify-between border-border border rounded-xl h-[28rem] m-8 p-8 shadow-xl transition ease-in-out delay-150 hover:scale-105">
-                        <img src={product?.image} alt={product?.name} />
+                        <Image src={product?.image} alt={product?.name} width={800} height={800}/>
                         <div className="flex flex-col items-center">
                             <h1 className="text-3xl">{`$ USD ${product?.price}`}</h1>
                             <h4 className="text-2xl">{product?.name}</h4>

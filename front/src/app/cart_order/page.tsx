@@ -6,6 +6,7 @@ import { postOrders } from "@/helpers";
 import { useRouter } from 'next/navigation'
 import { useCart } from "@/context/ContextCart";
 import { useAuth } from "@/context/Context";
+import Image from "next/image";
 
 
 export default function CartOrder() {
@@ -74,7 +75,7 @@ return (
             </div>
             {cartProducts.map((product,index)=>{
                 return <div key={index} className="w-full flex flex-row items-center justify-between border-border border rounded-xl  mb-4 p-4 shadow-lg transition ease-in-out delay-150 hover:scale-105">
-                        <img src={product.image} className="w-20 max-sm:w-12" alt={product.name}/>
+                        <Image src={product.image} className="w-20 max-sm:w-12" alt={product.name} width={800} height={800}/>
                         <h4 className="text-lg max-sm:text-sm">{product.name}</h4>
                         <h4 className="text-lg max-sm:text-sm">{product.stock}</h4>
                         <h1 className="text-lg max-sm:text-sm">{`$ USD ${product.price}`}</h1>

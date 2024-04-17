@@ -8,7 +8,7 @@ export default function Banner() {
 
     useEffect(() => {
         showSlides(slideIndex);
-    }, []);
+    }, [ slideIndex]);
 
     // Next/previous controls
     function plusSlides(n: number): void {
