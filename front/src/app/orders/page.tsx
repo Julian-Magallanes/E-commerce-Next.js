@@ -1,12 +1,36 @@
-import { getOrders, getProducts } from "@/helpers"
+'use client'
+import { getOrders} from "@/helpers"
 import { IOrder } from "../types"
+import { useAuth } from "@/context/Context";
+import { useEffect, useState } from "react";
 
 
-export default async function Order() {
-    const orders: IOrder[] = await getOrders()
-    console.log(orders)
-const products = await getProducts()
-console.log(products)
+
+export default function Order() {
+
+    const auth = useAuth();
+
+    const [orders, setOrders] = useState<IOrder[]>([]);
+
+    useEffect(() => {
+        const fetchOrders = async () => {
+            try {
+                if (auth) { // Verifica si auth está definido antes de acceder a sus propiedades
+                    const { token } = auth;
+                    if (token) { // Verifica si el token está definido
+                        const ordersData: IOrder[] = await getOrders(token);
+                        setOrders(ordersData);
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching orders:", error);
+            }
+        };
+
+        fetchOrders();
+    }, [auth]);
+console.log(orders)
+
 const formatDateTime = (isoDateString: string) => {
         const date = new Date(isoDateString);
         const options: Intl.DateTimeFormatOptions = {

@@ -24,7 +24,7 @@ export interface IProduct {
     count:number;
   }
 
-interface IUser {
+  export interface IUser {
     id: number;
     name: string;
     email: string;

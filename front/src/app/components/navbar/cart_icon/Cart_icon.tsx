@@ -1,13 +1,15 @@
 import Link from "next/link"
 import { ButtonCart, Image } from "./Cart_icon.styles"
-import { ICartProduct, IProduct } from "@/app/types"
+import {IProduct } from "@/app/types"
 import { useEffect, useState } from "react"
 import { useCart } from "@/context/ContextCart"
+import { useAuth } from "@/context/Context"
 
 const CartIcon:React.FC=():React.ReactElement => {
 
     const cartStorage = useCart()
     const { cart} = cartStorage || {};
+    const {token} = useAuth() || {};
 
     const [countTotal, setCountTotal] = useState(0)
     useEffect(()=>{
@@ -30,7 +32,7 @@ const CartIcon:React.FC=():React.ReactElement => {
         <ButtonCart>
             <Link href="/cart_order" className="flex">
                 <Image src="https://res.cloudinary.com/dzxrc9b6o/image/upload/v1712494041/Next/cartIcon_jy3qtk.svg" alt="searchCart" width={50} height={50} loading="lazy"/>
-                {cart ? <h1 className="absolute text-text font-bold border bg-terciary rounded-full w-4 text-xs right-[104px]">{countTotal}</h1> : <div className="hidden"/>}
+                {token && <div>{cart ? <h1 className="absolute text-text font-bold border bg-terciary rounded-full w-4 text-xs right-[104px]">{countTotal}</h1> : <div className="hidden"/>}</div>}
             </Link>
         </ButtonCart>
     )

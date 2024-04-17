@@ -5,11 +5,13 @@ import { ICartProduct, IProduct } from "../types";
 import { postOrders } from "@/helpers";
 import { useRouter } from 'next/navigation'
 import { useCart } from "@/context/ContextCart";
+import { useAuth } from "@/context/Context";
 
 
 export default function CartOrder() {
     const router = useRouter();
     const { cart, cleanCart } = useCart() || {};
+    const {token} = useAuth() || {};
 
     const [cartProducts, setCartProducts] = useState<ICartProduct[]>([]);
     const [total, setTotal] = useState(0);
@@ -91,7 +93,7 @@ return (
                     <h1 className="text-xl">{`$ USD ${total}`}</h1>
                 </div>
                 <div className="flex flex-row">
-                    <button className=" m-6 rounded-xl w-48 bg-terciary h-10 border-border border hover:bg-hoverButton" onClick={handlePostOrders}>Proceed to Checkout</button>
+                    {token && <button className=" m-6 rounded-xl w-48 bg-terciary h-10 border-border border hover:bg-hoverButton" onClick={handlePostOrders}>Proceed to Checkout</button>}
                     <button className=" m-6 rounded-xl w-48 bg-terciary h-10 border-border border hover:bg-hoverButton" onClick={()=>router.push('/products')}>Continue Shopping</button>
                 </div>
             </div>

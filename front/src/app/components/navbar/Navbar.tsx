@@ -25,7 +25,7 @@ const Navbar: React.FC = (): React.ReactElement => {
                 <Cart_icon/>
                 <div className="flex max-md:hidden">
                 {token ? <AvatarProfile/>:<Login_icon/>}
-                <Bag_icon/>
+                {token && <Bag_icon/>}
                 </div>
             <Menu/>
             </div>

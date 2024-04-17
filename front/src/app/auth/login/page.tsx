@@ -39,7 +39,7 @@ export default function Login() {
             showConfirmButton: false,
             timer: 1500
           });
-          router.push('/')
+          router.push('/') 
         }
         catch(error){
             Swal.fire({
@@ -57,7 +57,7 @@ export default function Login() {
         
         <form className="w-2/3 mx-auto m-10 max-md:w-full p-10">
             <h1 className="text-4xl text-center m-4">Form login</h1>
-            <h4 className="text-xl text-center m-4"> Sign in to TechBox or <Link className="text-sky-600 font-semibold hover:border-sky-600 hover:border-b-2" href="auth/register">create an account</Link></h4>
+            <h4 className="text-xl text-center m-4"> Sign in to TechBox or <Link className="text-sky-600 font-semibold hover:border-sky-600 hover:border-b-2" href="/auth/register">create an account</Link></h4>
         <div className="mb-5">
             <label className="block mb-2 text-lg font-medium text-text dark:text-white">Your email</label>
             <input type="email" id="email" className="shadow-sm  border border-border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required 

@@ -1,9 +1,17 @@
 import axios from "axios"
+import{IUser} from "@/app/types"
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
-const token = process.env.NEXT_PUBLIC_TOKEN_AUTHORIZATION
+
 export interface UserData {
     email: string;
     password: string;
+}
+export interface UserDataRegister {
+    email: string;
+    password: string;
+    name:string;
+    address:string;
+    phone:string;
 }
 async function postLogin(userData:UserData) {
     try{
@@ -16,8 +24,6 @@ async function postLogin(userData:UserData) {
 
     }
 );
-    //localStorage.setItem("userToken", response.data.token)
-    console.log(response)
     return response.data;
     }catch (error){
         console.log(error)
@@ -25,10 +31,10 @@ async function postLogin(userData:UserData) {
 }
 } 
 
-async function postRegister() {
+async function postRegister(userDataRegister:UserDataRegister) {
     try{
     const response = await axios.post(`${apiUrl}/users/register`, 
-        
+    userDataRegister,  
     );
     return response.data;
     }catch (error){
