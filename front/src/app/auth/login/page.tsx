@@ -9,11 +9,6 @@ import { useAuth } from "@/context/Context"
 import { ValidateLogin } from "@/middleware";
 import { ICredential } from "@/app/types";
 
-/*import { Metadata } from "next";
-export const metadata: Metadata = {
-    title: "Login - TechBox",
-    description: "Welcome to TechBox's login page. Log in to access your account and explore our exciting tech offerings. If you're already a member, simply enter your credentials to get started. Forgot your password? No worries! We've got you covered with our password recovery options. Join the TechBox community today and experience a world of innovation and convenience at your fingertips.",
-  };*/
 
 export default function Login() {
     const router = useRouter()
@@ -41,7 +36,8 @@ export default function Login() {
         event.preventDefault()
         try{const response = await postLogin(userData);
             if (login) {
-                login(response.token);
+                login(response.token, response.user);
+
             }
         Swal.fire({
             position: "top-end",
@@ -91,7 +87,10 @@ export default function Login() {
             <div className="flex items-center h-5">
             </div>
         </div>
-        <button type="submit" className="text-text border border-border bg-terciary hover:scale-105 hover:bg-hoverButton font-medium rounded-lg text-lg px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handleSubmit}>Continue</button>
+        <button type="submit" className="text-text border border-border bg-terciary hover:scale-105 hover:bg-hoverButton font-medium rounded-lg text-lg px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:hover:scale-100 disabled:bg-secondary" 
+        onClick={handleSubmit}
+        disabled={!!errorData.email || !!errorData.password} //!! convierte en valores booleanos
+        >Continue</button>
         </form>
 
     )

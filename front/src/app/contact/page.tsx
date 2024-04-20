@@ -20,11 +20,7 @@ export default function Contact() {
         </div>
         <div className="mb-5">
             <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Your message</label>
-            <input type="password" id="repeat-password" className="shadow-sm h-40 border border-border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
-        </div>
-        <div className="flex items-start mb-5">
-            <div className="flex items-center h-5">
-            </div>
+            <input type="text" id="text-Area" className="shadow-sm h-40 border border-border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
         </div>
         <button type="submit" className="text-text border border-border bg-terciary hover:scale-105 hover:bg-hoverButton font-medium rounded-lg text-lg px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Send Message</button>
         </form>

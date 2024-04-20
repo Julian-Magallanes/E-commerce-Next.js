@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { useCart } from "@/context/ContextCart";
 import { useAuth } from "@/context/Context";
 import Image from "next/image";
+import Swal from "sweetalert2";
 
 
 export default function CartOrder() {
@@ -53,33 +54,50 @@ export default function CartOrder() {
         setCountTotal(0);
         router.push('/orders');
     }
+    function handleDisableAlert(){
+        Swal.fire({
+            title: "you are not logged in",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Sign in",
+            denyButtonText: `Register`
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              Swal.fire("Go to Login!", "", "success");
+              router.push('/auth/login');
+            } else if (result.isDenied) {
+              Swal.fire("Go to register", "", "success");
+              router.push('/auth/register');
+            }
+          });
+    }
 return (
     <div className="flex flex-row w-full justify-between  p-10 max-md:flex-col">  
         <div className=" w-full md:pr-5">
             <div className="w-full flex flex-row items-center justify-between  px-8 my-4 py-2 border-border border rounded-xl shadow-lg">
-                <h1 className="text-lg">
+                <h1 className="text-lg w-2/4 text-center max-sm:text-sm">
                     Product
                 </h1 >
-                <h1 className="text-lg">
-                    Price
-                </h1>
-                <h1 className="text-lg">
+                <h1 className="text-lg w-1/4 text-center max-sm:text-sm">
                     Amount
                 </h1>
-                <h1 className="text-lg">
+                <h1 className="text-lg w-1/4 text-center max-sm:text-sm">
                     Price
                 </h1>
-                <h1 className="text-lg">
+                <h1 className="text-lg w-1/4 text-center max-sm:text-sm">
                     Count
                 </h1>
             </div>
             {cartProducts.map((product,index)=>{
                 return <div key={index} className="w-full flex flex-row items-center justify-between border-border border rounded-xl  mb-4 p-4 shadow-lg transition ease-in-out delay-150 hover:scale-105">
+                        <div className="w-1/5 flex justify-center">
                         <Image src={product.image} className="w-20 max-sm:w-12" alt={product.name} width={800} height={800}/>
-                        <h4 className="text-lg max-sm:text-sm">{product.name}</h4>
-                        <h4 className="text-lg max-sm:text-sm">{product.stock}</h4>
-                        <h1 className="text-lg max-sm:text-sm">{`$ USD ${product.price}`}</h1>
-                        <h1 className="text-lg max-sm:text-sm">{product.count}</h1>
+                        </div>
+                        <h4 className="text-lg max-sm:text-sm w-1/5 text-center">{product.name}</h4>
+                        <h4 className="text-lg max-sm:text-sm w-1/5 text-center">{product.stock}</h4>
+                        <h1 className="text-lg max-sm:text-sm w-1/5 text-center">{`$ USD ${product.price}`}</h1>
+                        <h1 className="text-lg max-sm:text-sm w-1/5 text-center">{product.count}</h1>
                     </div>
             })}
         </div>
@@ -87,15 +105,16 @@ return (
             <div className="flex flex-col justify-between content-between bg-secondary rounded-xl w-full border-border border shadow-md h-full mx4 mt-4 mb-4">
                 <div className="flex m-6 justify-between">
                     <p className="text-xl">Aticles: </p>
-                    <h1 className="text-xl w-20 text-center"> {countTotal}</h1>
+                    <h1 className="text-2xl font-bold w-20 text-center"> {countTotal}</h1>
                 </div>
                 <div className="flex m-6 justify-between">
                     <h2 className="text-xl">Total: </h2>
-                    <h1 className="text-xl">{`$ USD ${total}`}</h1>
+                    <h1 className="text-2xl font-bold" >{`$ USD ${total}`}</h1>
                 </div>
-                <div className="flex flex-row">
-                    {token && <button className=" m-6 rounded-xl w-48 bg-terciary h-10 border-border border hover:bg-hoverButton" onClick={handlePostOrders}>Proceed to Checkout</button>}
-                    <button className=" m-6 rounded-xl w-48 bg-terciary h-10 border-border border hover:bg-hoverButton" onClick={()=>router.push('/products')}>Continue Shopping</button>
+                <div className="flex flex-row justify-between">
+                    {token ? <button className=" m-6 rounded-xl w-48 bg-terciary py-2 border-border border hover:bg-hoverButton" onClick={handlePostOrders}>Proceed to Checkout</button>
+                    :<button className=" m-6 rounded-xl w-48 bg-secondary py-2 border-border border" onClick={handleDisableAlert}>Proceed to Checkout</button>}
+                    <button className=" m-6 rounded-xl w-48 bg-terciary py-2 border-border border hover:bg-hoverButton" onClick={()=>router.push('/products')}>Continue Shopping</button>
                 </div>
             </div>
         </div>

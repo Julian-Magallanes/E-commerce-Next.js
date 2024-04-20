@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   function Loading() {
-  return <h2>🌀 Loading...</h2>;
+  return <h2 className="w-full text-center p-10"> Loading...</h2>;
 }
   return (
     <><div className="max-sm:hidden">

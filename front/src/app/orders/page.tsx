@@ -45,13 +45,13 @@ const formatDateTime = (isoDateString: string) => {
         return date.toLocaleString('en-US', options);
     };
     function Loading() {
-        return <h2>🌀 Loading...</h2>;
+        return <h2 className="w-full text-center p-10"> Loading...</h2>;
       }
 return (
     <div>
         <h1 className="w-full text-2xl text-center pt-10 px-10 font-semibold">Orders List</h1>  
     <div className="flex flex-row w-full justify-between  p-10 max-md:flex-col">
-        <div className=" w-full md:pr-5">
+        <div className=" w-full ">
             <div className="w-full flex flex-row items-center justify-between  px-4 my-4 py-2 border-border border rounded-xl shadow-lg">
                 <h1 className="w-60 text-center text-lg">
                     Products
