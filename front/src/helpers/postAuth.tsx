@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios, { AxiosResponse } from "axios"
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
 export interface UserData {
@@ -12,9 +12,9 @@ export interface UserDataRegister {
     address:string;
     phone:string;
 }
-async function postLogin(userData:UserData) {
+async function postLogin(userData:UserData): Promise<any> {
     try{
-    const response = await axios.post(`${apiUrl}/users/login`, 
+    const response:AxiosResponse<any> = await axios.post(`${apiUrl}/users/login`, 
     userData,
     {
         headers:{
@@ -29,9 +29,9 @@ async function postLogin(userData:UserData) {
     }
 } 
 
-async function postRegister(userDataRegister:UserDataRegister) {
+async function postRegister(userDataRegister:UserDataRegister): Promise<any> {
     try{
-    const response = await axios.post(`${apiUrl}/users/register`, 
+    const response:AxiosResponse<any> = await axios.post(`${apiUrl}/users/register`, 
     userDataRegister,  
     );
     return response.data;

@@ -1,11 +1,12 @@
-import axios from "axios"
+import { IOrder } from "@/app/types";
+import axios, { AxiosResponse } from "axios"
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
 
-async function getOrders(token:any) {
+async function getOrders(token:string): Promise<IOrder[]> {
     
     try{
-    const response = await axios.get(`${apiUrl}/users/orders`, {
+    const response: AxiosResponse<IOrder[]> = await axios.get(`${apiUrl}/users/orders`, {
         headers:{
             Authorization:token,
         }
