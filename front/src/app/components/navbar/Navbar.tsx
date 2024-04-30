@@ -1,6 +1,5 @@
 'use client'
 
-import Bag_icon from "./bag_icon"
 import Cart_icon from "./cart_icon"
 import Login_icon from "./login_icon"
 import Logo from "./logo"
@@ -23,7 +22,6 @@ const Navbar: React.FC = (): React.ReactElement => {
                 <Cart_icon/>
                 <div className="flex max-md:hidden">
                 {token ? <AvatarProfile/>:<Login_icon/>}
-                {token && <Bag_icon/>}
                 </div>
             <Menu/>
             </div>
